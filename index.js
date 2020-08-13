@@ -21,6 +21,10 @@ const faker = require('faker');
 
   const site = 'https://news.ycombinator.com';
   await page.goto(site);
+  await page.evaluate(() => {
+    document.querySelectorAll('.storylink')[0].click();
+  });
+  await page.waitForNavigation();
   await page.screenshot({path: `${encodeURIComponent(site)}.png`});
   const title = await page.evaluate(() => {
     return document.querySelector('title').textContent;
