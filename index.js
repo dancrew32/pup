@@ -26,6 +26,7 @@ const faker = require('faker');
   });
   await page.waitForNavigation();
   await page.screenshot({path: `${encodeURIComponent(site)}.png`});
+  await page.pdf({path: `${encodeURIComponent(site)}.pdf`});
   const title = await page.evaluate(() => {
     return document.querySelector('title').textContent;
   });
